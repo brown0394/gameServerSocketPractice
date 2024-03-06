@@ -13,12 +13,12 @@ void setSockAddr(sockaddr_in& myAddr, int b1, int b2, int b3, int b4, int port) 
 }
 
 int main() {
-	LPWSADATA lpwsa;
+	WSAData lpwsa;
 
 	sockaddr_in myAddr;
 	setSockAddr(myAddr, 65, 254, 248, 180, 80);
 
-	if (!WSAStartup(MAKEWORD(2, 2), lpwsa)) {
+	if (!WSAStartup(MAKEWORD(2, 2), &lpwsa)) {
 
 
 		WSACleanup();
