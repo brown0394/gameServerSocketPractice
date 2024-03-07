@@ -1,6 +1,10 @@
 #include <iostream>
 #include <Winsock2.h>
 #include <WS2tcpip.h>
+#include "UDPSocket.h"
+#include "SocketAddress.h"
+#include "SocketUtil.h"
+#include "SocketAddressFactory.h"
 
 void setSockAddr(sockaddr_in& myAddr, int b1, int b2, int b3, int b4, int port) {
 	memset(myAddr.sin_zero, 0, sizeof(myAddr.sin_zero));
@@ -12,12 +16,13 @@ void setSockAddr(sockaddr_in& myAddr, int b1, int b2, int b3, int b4, int port) 
 	myAddr.sin_addr.S_un.S_un_b.s_b4 = b4;
 }
 
+
 int main() {
 	WSAData lpwsa;
 
 	sockaddr_in myAddr;
 	setSockAddr(myAddr, 65, 254, 248, 180, 80);
-
+	SocketAddressPtr socketAddress = SocketAddressFactory::CreateIPv4FromString("65.254.248.180:80");
 	if (!WSAStartup(MAKEWORD(2, 2), &lpwsa)) {
 
 
