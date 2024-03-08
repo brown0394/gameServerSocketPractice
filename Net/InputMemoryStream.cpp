@@ -21,3 +21,15 @@ void InputMemoryStream::Read(int32_t& outData) {
 void InputMemoryStream::ResetHead() {
 	mHead = 0;
 }
+
+InputMemoryStream::InputMemoryStream(uint32_t inByteCount) : mCapacity(inByteCount), mHead(0) {
+	mBuffer = static_cast<char*>(std::malloc(mCapacity));
+}
+
+uint32_t InputMemoryStream::getCapacity() {
+	return mCapacity;
+}
+
+char* InputMemoryStream::getBufferPtr() {
+	return mBuffer;
+}
