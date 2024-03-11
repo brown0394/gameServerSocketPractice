@@ -15,7 +15,7 @@ public:
 	void Write(uint32_t inData) { Write(&inData, sizeof(inData)); }
 	void Write(int32_t inData) { Write(&inData, sizeof(inData)); }
 	template<typename T>
-	void Write(T inData) { Write(&inData, sizeof(inData)); };
+	void Write(T inData);
 	template<typename T>
 	void Write(const std::vector<T>& inVector);
 //	template<typename T> void Write(T inData);

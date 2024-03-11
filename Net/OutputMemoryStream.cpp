@@ -31,6 +31,14 @@ void OutputMemoryStream::Write(const std::vector<T>& inVector) {
 	}
 }
 
+template<typename T>
+void OutputMemoryStream::Write(T inData) {
+	static_assert(std::is_arithmetic<T>::value ||
+		std::is_enum<T>::value,
+		"Generic Write only supports primitive data types");
+	Write(&inData, sizeof(inData)); 
+}
+
 /*
 template<typename T> void OutputMemoryStream::Write(T inData) {
 	static_assert(
