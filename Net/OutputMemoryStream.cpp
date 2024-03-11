@@ -22,3 +22,20 @@ void OutputMemoryStream::Write(const void* inData, size_t inByteCount) {
 	//increment head for next write
 	mHead = resultHead;
 }
+
+/*
+template<typename T> void OutputMemoryStream::Write(T inData) {
+	static_assert(
+		std::is_arithmetic<T>::value ||
+		std::is_enum<T>::value,
+		"Generic Write only supports primitive data types");
+	if (STREAM_ENDIANNESS == PLATFORM_ENDIANNESS)
+	{
+		Write(&inData, sizeof(inData));
+	}
+	else
+	{
+		T swappedData = ByteSwap(inData);
+		Write(&swappedData, sizeof(swappedData));
+	}
+}*/

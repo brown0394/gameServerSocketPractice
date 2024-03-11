@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClCompile Include="InputMemoryStream.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="OutputMemoryBitStream.cpp" />
     <ClCompile Include="OutputMemoryStream.cpp" />
     <ClCompile Include="SocketAddress.cpp" />
     <ClCompile Include="SocketAddressFactory.cpp" />
@@ -138,6 +139,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="InputMemoryStream.h" />
+    <ClInclude Include="OutputMemoryBitStream.h" />
     <ClInclude Include="OutputMemoryStream.h" />
     <ClInclude Include="SocketAddress.h" />
     <ClInclude Include="SocketAddressFactory.h" />
