@@ -18,6 +18,11 @@ void InputMemoryStream::Read(int32_t& outData) {
 	Read(&outData, sizeof(outData));
 }
 
+template<typename T>
+void InputMemoryStream::Read(T& outData) {
+	Read(&outData, sizeof(outData));
+}
+
 void InputMemoryStream::ResetHead() {
 	mHead = 0;
 }
@@ -32,4 +37,14 @@ uint32_t InputMemoryStream::getCapacity() {
 
 char* InputMemoryStream::getBufferPtr() {
 	return mBuffer;
+}
+
+template<typename T>
+void InputMemoryStream::Read(std::vector<T>& outVector) {
+	size_t elementCount;
+	Read(elementCount);
+	outVector.resize(elementCount);
+	for (const T& element : outVector) {
+		Read(element);
+	}
 }

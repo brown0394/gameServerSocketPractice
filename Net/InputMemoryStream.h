@@ -1,5 +1,7 @@
 #pragma once
 #include <memory>
+#include <vector>
+
 class InputMemoryStream
 {
 public:
@@ -11,6 +13,10 @@ public:
 	void Read(void* outData, uint32_t inByteCount);
 	void Read(uint32_t& outData);
 	void Read(int32_t& outData);
+	template<typename T>
+	void Read(std::vector<T>& outVector);
+	template<typename T>
+	void Read(T& outData);
 	void ResetHead();
 	uint32_t getCapacity();
 	char* getBufferPtr();
