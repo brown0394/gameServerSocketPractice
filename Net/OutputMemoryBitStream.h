@@ -20,3 +20,4 @@ private:
 	uint32_t mBitCapacity;
 };
 
+//only in little endian

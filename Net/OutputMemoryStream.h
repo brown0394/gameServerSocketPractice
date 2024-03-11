@@ -1,5 +1,7 @@
 #pragma once
 #include <memory>
+#include <vector>
+
 class OutputMemoryStream {
 public:
 	OutputMemoryStream() : mBuffer(nullptr), mHead(0), mCapacity(0) {
@@ -12,6 +14,10 @@ public:
 	void Write(const void* inData, size_t inByteCount);
 	void Write(uint32_t inData) { Write(&inData, sizeof(inData)); }
 	void Write(int32_t inData) { Write(&inData, sizeof(inData)); }
+	template<typename T>
+	void Write(T inData) { Write(&inData, sizeof(inData)); };
+	template<typename T>
+	void Write(const std::vector<T>& inVector);
 //	template<typename T> void Write(T inData);
 private:
 	void ReallocBuffer(uint32_t inNewLength);

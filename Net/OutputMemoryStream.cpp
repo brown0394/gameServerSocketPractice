@@ -22,6 +22,14 @@ void OutputMemoryStream::Write(const void* inData, size_t inByteCount) {
 	//increment head for next write
 	mHead = resultHead;
 }
+template<typename T>
+void OutputMemoryStream::Write(const std::vector<T>& inVector) {
+	uint32_t elementCount = inIntVector.size();
+	Write(elementCount);
+	for (const T& element : inVector) {
+		Write(element);
+	}
+}
 
 /*
 template<typename T> void OutputMemoryStream::Write(T inData) {
