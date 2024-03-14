@@ -81,3 +81,11 @@ void OutputMemoryBitStream::Write(T inData, size_t inBitCount)
 		"Generic Write only supports primitive data types");
 	WriteBits(&inData, inBitCount);
 }
+
+uint32_t OutputMemoryBitStream::ConvertToFixed(float inNumber, float inMin, float inPrecision) {
+	return static_cast<uint32_t> ((inNumber - inMin) / inPrecision);
+}
+
+float OutputMemoryBitStream::ConvertFromFixed(uint32_t inNumber, float inMin, float inPrecision) {
+	return static_cast<float>(inNumber) * inPrecision + inMin;
+}

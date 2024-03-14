@@ -13,6 +13,8 @@ public:
 	void WriteBytes(const void* inData, size_t inByteCount);
 	template<typename T>
 	void Write(T inData, size_t inBitCount = sizeof(T) * 8);
+	inline uint32_t ConvertToFixed(float inNumber, float inMin, float inPrecision);
+	inline float ConvertFromFixed(uint32_t inNumber, float inMin, float inPrecision);
 private:
 	void ReallocBuffer(uint32_t inNewBitCapacity);
 	char* mBuffer;
